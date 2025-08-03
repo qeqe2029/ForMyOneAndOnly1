@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 body {
   margin: 0;
   font-family: 'Comic Sans MS', cursive;
@@ -5,26 +9,38 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-}
-
-.container {
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
   text-align: center;
 }
 
+.container {
+  max-width: 800px;
+  width: 100%;
+}
+
 .question {
-  font-size: 4.5em;
+  font-size: 3em;
   color: #d63384;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .buttons button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   margin: 10px;
   font-size: 1.2em;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.2s;
+  min-width: 120px;
 }
 
 .buttons button:hover {
@@ -47,36 +63,40 @@ button:last-child {
 
 .surprise {
   animation: fadeIn 2s ease-in-out;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .flowers {
-  font-size: 3em;
+  font-size: 2.5em;
   animation: float 2s infinite alternate ease-in-out;
 }
 
 .image {
-  width: 200px;
-  margin-top: 10px;
+  height: auto;
+  width: 90%;
+  max-width: 200px;
+  margin: 10px 10px;
   animation: fadeIn 3s ease-in-out;
 }
 
 .message {
-  font-size: 2.5em;
-  margin-top: 10px;
+  font-size: 2em;
+  margin-top: 15px;
   color: #ff1493;
   animation: fadeIn 4s ease-in-out;
 }
 
-.message1{
-    margin-right: 200px;
-    margin-left: 200px;
-    font-size: 1.5em;
-    color: #ff1493;
-    animation: fadeIn 4s ease-in-out;
-    text-align: left;
+.message1 {
+  margin: 20px auto;
+  font-size: 1.2em;
+  color: #ff1493;
+  animation: fadeIn 4s ease-in-out;
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.5em;
 }
 
+/* Animations */
 @keyframes fadeIn {
   0% {opacity: 0;}
   100% {opacity: 1;}
@@ -85,4 +105,48 @@ button:last-child {
 @keyframes float {
   0% {transform: translateY(0);}
   100% {transform: translateY(-10px);}
+}
+
+/* Responsive Text */
+@media (max-width: 600px) {
+  .question {
+    font-size: 2em;
+  }
+
+  .message {
+    font-size: 1.5em;
+  }
+
+  .message1 {
+    font-size: 1em;
+    text-align: justify;
+  }
+
+  .flowers {
+    font-size: 2em;
+  }
+
+  .image {
+    width: 80%;
+    max-width: 150px;
+  }
+}
+.floating-flower {
+  position: fixed;
+  top: -50px;
+  animation-name: fall;
+  animation-timing-function: linear;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
 }
